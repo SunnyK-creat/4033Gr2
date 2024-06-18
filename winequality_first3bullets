@@ -1,0 +1,14 @@
+#import dataset : winequality_red file
+
+library(dplyr)
+library(ggplot2)
+
+#Print the structure of your dataset
+str(winequality_red)
+print(winequality_red)
+
+#List the variables in your dataset
+name(winequality_red)
+
+#Print the top 15 rows of your dataset
+head(winequality_red, 15)
