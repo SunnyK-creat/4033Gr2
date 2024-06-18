@@ -1,0 +1,10 @@
+#Write a user defined function using any of the variables from the data set.
+sum_of_square <- function(x,y){x^2-y^2}
+sum_of_square(iris$Sepal.Length, iris$Sepal.Width)
+
+#Use data manipulation techniques and filter rows based on any logical criteria that exist in your dataset.
+filtered_data <- iris %>% filter(Species == "setosa")
+print(filtered_data)
+Mydata = as.data.frame(iris %>% filter(Sepal.Length>5, Sepal.Width>=4))
+print(Mydata)
+
