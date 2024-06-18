@@ -1,0 +1,73 @@
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+
+# Load the iris dataset
+data(iris)
+
+# 1. Print the structure of your dataset
+str(iris)
+
+# 2. List the variables in your dataset
+names(iris)
+
+# 3. Print the top 15 rows of your dataset
+head(iris, 15)
+
+# 4. Write a user-defined function using any of the variables from the dataset
+calculate_mean <- function(x) {
+  return(mean(x, na.rm = TRUE))
+}
+calculate_mean(iris$Sepal.Length)
+
+# 5. Use data manipulation techniques and filter rows based on any logical criteria that exist in your dataset
+filtered_data <- iris %>% filter(Species == "setosa")
+
+# 6. Identify the dependent & independent variables and use reshaping techniques
+# For iris dataset, Species is the dependent variable
+dependent_var <- iris$Species
+independent_vars <- iris %>% select(-Species)
+
+# Creating a new data frame
+reshaped_data <- cbind(independent_vars, dependent_var)
+
+# 7. Remove missing values in your dataset (iris dataset has no missing values, but let's assume)
+iris_clean <- na.omit(iris)
+
+# 8. Identify and remove duplicated data in your dataset
+iris_clean <- iris_clean %>% distinct()
+
+# 9. Reorder multiple rows in descending order
+iris_sorted <- iris %>% arrange(desc(Sepal.Length))
+
+# 10. Rename some of the column names in your dataset
+colnames(iris) <- c("Sepal_Length", "Sepal_Width", "Petal_Length", "Petal_Width", "Flower_Species")
+
+# 11. Add new variables in your data frame by using a mathematical function
+iris <- iris %>% mutate(Sepal_Length_Double = Sepal_Length * 2)
+
+# 12. Create a training set using random number generator engine
+set.seed(123)
+training_set <- iris[sample(1:nrow(iris), size = 0.7 * nrow(iris)), ]
+
+# 13. Print the summary statistics of your dataset
+summary(iris)
+
+# 14. Use any of the numerical variables from the dataset and perform statistical functions
+mean(iris$Sepal_Length)
+median(iris$Sepal_Length)
+mode <- function(x) {
+  unique_x <- unique(x)
+  return(unique_x[which.max(tabulate(match(x, unique_x)))])
+}
+mode(iris$Sepal_Length)
+range(iris$Sepal_Length)
+
+# 15. Plot a scatter plot for any 2 variables in your dataset
+ggplot(iris, aes(x = Sepal_Length, y = Petal_Length)) + geom_point()
+
+# 16. Plot a bar plot for any 2 variables in your dataset
+ggplot(iris, aes(x = Species, y = Sepal_Length)) + geom_bar(stat = "identity")
+
+# 17. Find the correlation between any 2 variables by applying Pearson correlation
+cor(iris$Sepal_Length, iris$Petal_Length)
