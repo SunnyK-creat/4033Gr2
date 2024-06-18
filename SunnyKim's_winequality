@@ -1,0 +1,20 @@
+# Write a user-defined function using any of the variables from the dataset :  sunny
+
+1)
+sum_of_square <- function(x,y){x^2+y^2}
+sum_of_square(winequality_red$`residual sugar`, winequality_red$`chlorides`)
+
+2)
+calculate_mean <- function(column) {return(mean(winequality_red[[column]], na.rm = TRUE))}
+print("Mean of 'alcohol' ")
+print(calculate_mean("alcohol"))
+
+# Use data manipulation techniques and filter rows based on any logical criteria that exist in the dataset : sunny
+
+1)
+Mydata = as.data.frame(winequality_red %>% filter(`fixed acidity`>10, `residual sugar`>=5))
+print(Mydata)
+
+2)
+filtered_data <- winequality_red %>% filter(quality >= 8)
+print(filtered_data)
